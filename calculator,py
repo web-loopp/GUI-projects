@@ -1,0 +1,101 @@
+from tkinter import *
+root=Tk()
+root.geometry('600x900')
+
+Label(root,text=' CALCULATOR').pack()
+def click(event):
+    text=event.widget.cget('text')#ek button widget se text nikalega
+    print(text)
+    global scvalue
+    if text=="=":
+        if scvalue.get().isdigit():
+            value=int(scvalue.get())
+        else:
+            value=eval(scvalue.get())
+        scvalue.set(value)
+        screen.update()
+
+    elif text=="c":
+        scvalue.set("")
+        screen.update()
+    else:
+        scvalue.set(scvalue.get() + text)
+        screen.update()
+
+
+scvalue=StringVar()
+scvalue.set('')
+screen=Entry(root,textvar=scvalue,font='lucida 20 bold').pack(fill=X)
+
+
+f1=Frame(root,bg='grey',pady=20)
+f1.pack()
+
+b=Button(f1,text='1',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+b=Button(f1,text='2',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+b=Button(f1,text='3',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+
+f2=Frame(root,bg='grey',pady=20)
+f2.pack()
+
+b=Button(f2,text='4',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+b=Button(f2,text='5',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+b=Button(f2,text='6',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+
+f3=Frame(root,bg='grey',pady=20)
+f3.pack()
+
+b=Button(f3,text='7',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+b=Button(f3,text='8',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+b=Button(f3,text='9',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+
+f4=Frame(root,bg='grey',pady=20)
+f4.pack()
+
+b=Button(f4,text='0',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b=Button(f4,text='+',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+b=Button(f4,text='-',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+
+f5=Frame(root,bg='grey',pady=20)
+f5.pack()
+
+b=Button(f5,text='c',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+b=Button(f5,text='*',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+b=Button(f5,text='=',font='lucida 10 bold',padx=20,pady=20)
+b.pack(padx=20,side=LEFT)
+b.bind('<Button-1>',click)
+f4=Frame(root,bg='grey',pady=20)
+f4.pack()
+
+
+
+
+
+root.mainloop()
